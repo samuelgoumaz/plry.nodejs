@@ -1,0 +1,71 @@
+/* MIXIN : aspect ratio */
+/* -------------------------------------------------------------------------------- */
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+/* MIXIN : glitch */
+/* -------------------------------------------------------------------------------- */
+.fx-glitch {
+  color: inherit;
+  font-size: inherit;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+@keyframes noise-anim {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      $top: random(100);
+      $bottom: random(101 - $top);
+      clip-path: inset(#{$top}% 0 #{$bottom}%  0);
+    }
+  }
+}
+.fx-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 1px;
+  text-shadow: 3px 0 white;
+  top: 0;
+  color: inherit;
+  background: alternate-reverse;
+  overflow: hidden;
+  animation: noise-anim 15s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim-2 {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      $top: random(100);
+      $bottom: random(101 - $top);
+      clip-path: inset(#{$top}% 0 #{$bottom}%  0);
+    }
+  }
+}
+.fx-glitch::before {
+  content: attr(data-text);
+  position: absolute;
+  left: -1px;
+  text-shadow: -3px 0 white;
+  top: 0;
+  color: inherit;
+  background: alternate-reverse;
+  overflow: hidden;
+  animation: noise-anim-2 30s infinite linear alternate-reverse;
+}

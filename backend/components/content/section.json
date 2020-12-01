@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_content_sections",
+  "info": {
+    "name": "Section",
+    "icon": "stream"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "axe": {
+      "type": "richtext"
+    },
+    "exemple": {
+      "type": "richtext"
+    },
+    "conclusion": {
+      "type": "richtext"
+    },
+    "argument": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.argument"
+    }
+  }
+}
