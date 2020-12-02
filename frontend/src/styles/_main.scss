@@ -1,4 +1,31 @@
 // styles
+main#main {
+  width: 100%;
+  display: block;
+  position: relative;
+  padding: 100px 80px 0 80px;
+}
+html, body {
+  font-family: $custom;
+  color: $black;
+}
+.text-format {
+  font-size: 1.05em;
+  line-height: 1.4;
+
+
+
+  ul {
+    li {
+      list-style: initial;
+      margin-left: 20px;
+      padding-left: 10px;
+      strong {
+        color: $blue;
+      }
+    }
+  }
+}
 
 // responsive
 @media #{$small-and-down} {

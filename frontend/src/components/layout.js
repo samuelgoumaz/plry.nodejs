@@ -8,8 +8,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
 import Header from "./header"
+import { Helmet } from "react-helmet"
 //import "./layout.css"
 
 const Layout = ({ children }) => {
@@ -25,13 +25,15 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <Helmet>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+      </Helmet>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
+      <main id="main">{children}</main>
+      <footer></footer>
     </>
   )
 }

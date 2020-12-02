@@ -14,6 +14,9 @@ module.exports = {
     `node-sass`,
     `gatsby-plugin-sass`,
     `underscore`,
+    {
+      resolve: "gatsby-plugin-transition-link",
+    },
     `typography`,
     `three`,
     {

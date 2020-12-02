@@ -17,6 +17,58 @@
   }
 }
 
+/* MIXIN : transition */
+/* -------------------------------------------------------------------------------- */
+@mixin transition($x...){
+  -webkit-transition: $x;
+  -moz-transition: $x;
+  -ms-transition: $x;
+  -o-transition: $x;
+  transition: $x;
+}
+
+/* MIXIN : keyframes */
+/* -------------------------------------------------------------------------------- */
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes #{$animation-name} {
+        @content;
+    }
+    @-moz-keyframes #{$animation-name} {
+        @content;
+    }
+    @-ms-keyframes #{$animation-name} {
+        @content;
+    }
+    @-o-keyframes #{$animation-name} {
+        @content;
+    }
+    @keyframes #{$animation-name} {
+        @content;
+    }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+@include keyframes(fadeIn) {
+  0% { opacity: 0; }
+  10% { opacity: 0; }
+  25% { opacity: 1; }
+}
+
+/* MIXIN : fx */
+/* -------------------------------------------------------------------------------- */
+
+
+.fx-item {
+  @include animation('fadeIn 5s linear');
+  //@include transition(opacity 1s linear);
+}
+
 /* MIXIN : glitch */
 /* -------------------------------------------------------------------------------- */
 .fx-glitch {
