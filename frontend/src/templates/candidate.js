@@ -46,6 +46,7 @@ const CandidateTemplate = ({ data }) => {
           <div className="col col-content s12 m6 l6">
             <video width="100%" height="auto" controls poster={data.strapiCandidate.poster.publicURL}>
               <source src={data.strapiCandidate.video.publicURL} type="video/mp4" />
+              <track default kind="captions" srclang="fr" />
             </video>
             <h1>{data.strapiCandidate.name} {data.strapiCandidate.lastname}</h1>
             {data.strapiCandidate.biography && <div className="body biography text-format" dangerouslySetInnerHTML={{ __html:data.strapiCandidate.biography }} />}
