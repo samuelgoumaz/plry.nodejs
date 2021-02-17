@@ -11,6 +11,12 @@ export const query = graphql`
       id
       lastname
       name
+      poster {
+        publicURL
+      }
+      video {
+        publicURL
+      }
       image {
         childImageSharp {
           fluid(maxWidth: 800) {
@@ -28,7 +34,7 @@ const CandidateTemplate = ({ data }) => {
       <section className="section section-page">
 
         <div className="section-inner row">
-          <div className="col col-image s6 m6 l6">
+          <div className="col col-image s12 m6 l6">
 
             <div className="background">
               <div className="cover">
@@ -37,7 +43,10 @@ const CandidateTemplate = ({ data }) => {
             </div>
           </div>
 
-          <div className="col col-content s6 m6 l6">
+          <div className="col col-content s12 m6 l6">
+            <video width="100%" height="auto" controls poster={data.strapiCandidate.poster.publicURL}>
+              <source src={data.strapiCandidate.video.publicURL} type="video/mp4" />
+            </video>
             <h1>{data.strapiCandidate.name} {data.strapiCandidate.lastname}</h1>
             {data.strapiCandidate.biography && <div className="body biography text-format" dangerouslySetInnerHTML={{ __html:data.strapiCandidate.biography }} />}
             {data.strapiCandidate.citation && <div className="body citation text-format" dangerouslySetInnerHTML={{ __html:data.strapiCandidate.citation }} />}

@@ -32,6 +32,11 @@
       "type": "component",
       "repeatable": true,
       "component": "content.download"
+    },
+    "document": {
+      "type": "component",
+      "repeatable": true,
+      "component": "content.document"
     }
   }
 }

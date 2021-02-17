@@ -19,7 +19,46 @@
       height: auto;
     }
   }
+}
+.section-document {
+  .section-inner {
+    width: calc(100% + 20px);
+    margin-left: -10px;
+    padding: 10px 0;
 
+    &:after {
+      content: " ";
+      display: block;
+    }
+    .case {
+      width: 50%;
+      display: block;
+      float: left;
+      border: 10px solid white;
+      cursor: pointer;
+
+      .content {
+        text-align: center;
+        padding: 10px;
+        h3 {
+          font-size: 2em;
+        }
+      }
+
+      .background {
+        width: 100%;
+        display: block;
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+
+        .cover {
+          width: 100%;
+          display: block;
+        }
+      }
+    }
+  }
 }
 .section-chapter {
   .section-inner {
@@ -69,6 +108,16 @@
   width: 100%;
   position: relative;
 
+  h1 {
+    font-size: 2em;
+    text-align: left;
+    padding: 5px 0;
+    color: $blue;
+    border-bottom: 2px solid $blue;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
   .section-inner {
     .body {
       font-size: 2.5em;
@@ -78,6 +127,13 @@
 .section-candidates {
   margin-top: 20px;
   position: relative;
+  &:after {
+    content: " ";
+    display: block;
+    position: relative;
+    width: 100%;
+    clear: both;
+  }
 
   .section-inner {
     width: calc(100% + 20px);
@@ -107,7 +163,7 @@
           position: absolute;
           top: 0;
           left: 0;
-          background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5));
+          background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.25));
           z-index: 2;
 
           .title {
@@ -139,7 +195,12 @@
       overflow: hidden;
     }
     .col-content {
-      padding: 40px;
+      padding: 0 40px;
+      video {
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 40px;
+      }
       h1 {
         font-size: 2.5em;
         margin-bottom: 20px;
@@ -230,7 +291,246 @@
 }
 // responsive
 @media #{$small-and-down} {
-  // styles for small screens and down
+  .section-document {
+    .section-inner {
+      width: calc(100% + 20px);
+      margin-left: -10px;
+      padding: 10px 0;
+
+      &:after {
+        content: " ";
+        display: block;
+      }
+      .case {
+        width: 100%;
+        display: block;
+        float: left;
+        border: 10px solid white;
+        cursor: pointer;
+
+        .content {
+          text-align: center;
+          padding: 10px 0 0 0;
+          h3 {
+            font-size: 2em;
+          }
+        }
+
+        .background {
+          width: 100%;
+          display: block;
+          position: relative;
+          border-radius: 10px;
+          overflow: hidden;
+
+          .cover {
+            width: 100%;
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  .section-page {
+    margin-bottom: 80px;
+    .section-inner {
+      .col {
+        padding: 0;
+      }
+      .col-image {
+        @include aspect-ratio(800, 1000);
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 20px;
+      }
+      .col-content {
+        padding: 0;
+
+        h1 {
+          font-size: 2.5em;
+          margin-bottom: 20px;
+        }
+        .body {
+          margin-bottom: 20px;
+          font-weight: lighter;
+        }
+        .citation {
+          color: $blue;
+          font-weight: bolder;
+        }
+        .character {
+          font-weight: bolder;
+        }
+      }
+    }
+  }
+  .section-chapter {
+    .section-inner {
+      width: 100%;
+      padding: 0 !important;
+      .title {
+        font-size: 1.25em !important;
+        color: $blue;
+        width: 100% !important;
+        float: left;
+        text-align: left;
+        padding-right: 0;
+      }
+      .content {
+        width: 100%;
+        float: right;
+
+        .body {
+          font-weight: lighter;
+          margin-bottom: 40px;
+        }
+        .principal {
+          margin-bottom: 80px;
+        }
+        .axe {
+          font-weight: bolder;
+        }
+        .example {
+          color: $blue;
+          font-weight: bolder;
+        }
+        .conclusion {
+          font-style: italic;
+        }
+      }
+    }
+  }
+  .section-introduction {
+    padding: 20px !important;
+    display: block;
+    width: 100%;
+    position: relative;
+
+    h1 {
+      text-align: center !important;
+    }
+
+    .section-inner {
+      .body {
+        font-size: 1.25em;
+      }
+    }
+  }
+  .section-candidates {
+    margin-top: 20px;
+    position: relative;
+
+    .section-inner {
+      width: calc(100% + 20px);
+      margin-left: -10px;
+      display: block;
+
+      .candidate {
+        width: 100%;
+        padding: 10px;
+        float: left;
+
+        .inner {
+          width: 100%;
+          @include aspect-ratio(800,1000);
+          top: 0;
+          left: 0;
+          display: block;
+          position: relative;
+          border-radius: 10px;
+          overflow: hidden;
+          z-index: 2;
+
+          .content {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.25));
+            z-index: 2;
+
+            .title {
+              position: absolute;
+              bottom: 0;
+              margin: 20px;
+              writing-mode: vertical-rl;
+              text-orientation: mixed;
+              padding: 10px 0;
+              color: white;
+              display: inline-block;
+              font-size: 1.5em;
+              border-bottom: 4px solid $blue;
+            }
+          }
+        }
+      }
+    }
+  }
+  .section-banner {
+    background: $black;
+
+    &:before {
+      padding-top: 0 !important;
+    }
+    .background {
+      position: relative !important;
+    }
+
+    .section-inner {
+      position: relative !important;
+      .col {
+        height: 100%;
+        display: table-cell;
+        vertical-align: bottom;
+        float: none;
+        color: white;
+        padding: 20px !important;
+
+        &.col-files {
+          .files {
+            .item {
+              padding: 10px;
+              border: 1px solid white;
+              border-radius: 10px;
+              font-size: 1.15em;
+              margin-bottom: 10px;
+              i {
+                font-size: 1.25em;
+                font-size: inherit;
+                color: $blue;
+                padding-right: 5px;
+              }
+              &:hover {
+                background: white;
+                color: $black;
+              }
+            }
+          }
+        }
+        h1 {
+          font-size: 1.15em !important;
+          line-height: 1.4;
+          display: inline-block;
+          padding-top: 20px;
+        }
+        .body {
+          width: 50%;
+          border-top: 4px solid $blue;
+          padding-top: 20px;
+        }
+        span {
+          border-bottom: 4px solid $blue;
+          color: white;
+        }
+        i {
+          font-size: 0.75em;
+          color: $blue;
+        }
+      }
+    }
+  }
 }
 @media #{$medium-and-up} {
   // styles for medium screens and larger

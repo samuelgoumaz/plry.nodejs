@@ -29,7 +29,9 @@ html, body {
 
 // responsive
 @media #{$small-and-down} {
-  // styles for small screens and down
+  main#main {
+    padding: 80px 20px 0 20px;
+  }
 }
 @media #{$medium-and-up} {
   // styles for medium screens and larger

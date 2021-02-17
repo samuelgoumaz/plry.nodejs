@@ -30,10 +30,26 @@ export const query = graphql`
     }
     strapiHomepage {
       claim
+      document {
+        id
+        title
+        description
+        image {
+          childImageSharp {
+            fluid(maxWidth: 800) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        document {
+          publicURL
+        }
+      }
       download {
         id
         title
         id
+        link
         document {
           publicURL
         }
@@ -109,9 +125,12 @@ const IndexPage = ({ data }) => {
               {data.strapiHomepage.download.map(
                 (item) =>
                 <li key={`download-`+item.id} className="item">
-                  <a href={item.document.publicURL} target="_blank" rel="noreferrer">
+                  {item.document && <a href={item.document.publicURL} target="_blank" rel="noreferrer">
                     <i className="material-icons">insert_drive_file</i>{item.title}
-                  </a>
+                  </a>}
+                  {item.link && <a href={item.link} target="_blank" rel="noreferrer">
+                    <i className="material-icons">insert_drive_file</i>{item.title}
+                  </a>}
                 </li>
               )}
             </ul>
@@ -141,8 +160,32 @@ const IndexPage = ({ data }) => {
         </div>
       </section>
 
+      <section className="section section-document">
+        <div className="section-inner row">
+          {data.strapiHomepage.document.map(
+            (item) =>
+            <div className="case">
+              <a href={item.document.publicURL} target="_blank" rel="noreferrer">
+                <div className="inner">
+                  <div className="background">
+                    <div className="cover">
+                        <img alt={item.title} src={item.image.childImageSharp.fluid.src} />
+                    </div>
+                  </div>
+                  <div className="content">
+                    <h3>{item.title}</h3>
+                    <div className="description" dangerouslySetInnerHTML={{__html:item.description}} />
+                  </div>
+                </div>
+              </a>
+            </div>
+          )}
+        </div>
+      </section>
+
       <section className="section section-introduction">
         <div className="section-inner">
+          <h1>Notre programme</h1>
           {data.strapiHomepage.claim && <div className="body text-format" dangerouslySetInnerHTML={{ __html:data.strapiHomepage.claim }} />}
         </div>
       </section>
